@@ -46,6 +46,7 @@ enum Expr {
 	EConst( c : Const );
 	EIdent( v : String );
 	EVar( n : String, ?t : CType, ?e : Expr );
+	EFinal( n : String, ?t : CType, ?e : Expr );
 	EParent( e : Expr );
 	EBlock( e : Array<Expr> );
 	EField( e : Expr, f : String );
@@ -60,7 +61,7 @@ enum Expr {
 	EFunction( args : Array<Argument>, e : Expr, ?name : String, ?ret : CType );
 	EReturn( ?e : Expr );
 	EArray( e : Expr, index : Expr );
-	EArrayDecl( e : Array<Expr> );
+	EArrayDecl( e : Array<Expr>, ?wantedType: CType);
 	ENew( cl : String, params : Array<Expr> );
 	EThrow( e : Expr );
 	ETry( e : Expr, v : String, t : Null<CType>, ecatch : Expr );
