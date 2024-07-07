@@ -354,7 +354,8 @@ class Interp {
 				default: false;
 			}
 			declared.push({ n : n, old : locals.get(n) });
-			locals.set(n,{ r : (v == null)?null:expr(v), const : isConst});
+			var result = (e == null) ? null : expr(e);
+			locals.set(n,{ r : result, const : isConst});
 			return null;
 		case EParent(e):
 			return expr(e);
